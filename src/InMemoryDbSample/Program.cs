@@ -41,7 +41,7 @@ namespace InMemoryDbSample
         {
             var services = new ServiceCollection();           
 
-            var conn = "Data Source=(LocalDb)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DbProduct.mdf;Initial Catalog=DbProduct;Integrated Security=True;";//Configuration.GetConnectionString("InvictusConnection");
+            var conn = "Data Source=(LocalDb)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DbProduct.mdf;Initial Catalog=DbProduct;Integrated Security=True;";
            
             conn = conn.Replace("|DataDirectory|", System.IO.Directory.GetCurrentDirectory());
 

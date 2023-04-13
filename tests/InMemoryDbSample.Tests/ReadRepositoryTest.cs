@@ -15,21 +15,20 @@ namespace InMemoryDbSample.Tests
         private readonly ReadRepository _readRepository;        
         public ReadRepositoryTest()
         {
-            var dbInMemory = new MemoryDbConfig();
-            var context = dbInMemory.GetContext();
+            var dbInMemory = new MemoryDbConfig();            
             var idbConnection = dbInMemory.GetIDbContext();
             _readRepository = new ReadRepository(idbConnection);
         }
 
 
         [Fact]
-        public async Task ObterTodos()
+        public async Task Must_get_all_products()
         {
             //Act
-            var tarefas = await _readRepository.GetAll();
+            var products = await _readRepository.GetAll();
 
             //Assert
-            Assert.Equal(2, tarefas.Count());
+            Assert.Equal(2, products.Count());
         }        
     }
 }

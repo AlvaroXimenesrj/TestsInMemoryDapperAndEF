@@ -41,10 +41,10 @@ namespace InMemoryDbSample.Tests.Configure
             if (_context.Database.EnsureCreated())
             {
                 _context.Products.Add(
-                    new Product("Produto TESTE 1", true)
+                    new Product("Product TEST 1", true)
                 );
                 _context.Products.Add(
-                    new Product("Produto TESTE 2", true)
+                    new Product("Product TEST 2", true)
                 );
 
                 _context.SaveChanges();

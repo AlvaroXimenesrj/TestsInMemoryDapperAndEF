@@ -10,13 +10,13 @@ namespace InMemoryDbSample.Repository.EFCore
         {
             _context = context;
         }
-        public async Task AddProducts(IEnumerable<Product> products)
+        public async Task<bool> AddProducts(IEnumerable<Product> products)
         {
             _context.Database.EnsureCreated();
 
             await _context.AddRangeAsync(products);
 
-            await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync() > 0;
 
         }
 

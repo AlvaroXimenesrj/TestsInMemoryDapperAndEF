@@ -9,6 +9,6 @@ namespace InMemoryDbSample.Repository.Interfaces
 {
     public interface IWriteRepository : IDisposable
     {
-        Task AddProducts(IEnumerable<Product> products);
+        Task<bool> AddProducts(IEnumerable<Product> products);
     }
 }
