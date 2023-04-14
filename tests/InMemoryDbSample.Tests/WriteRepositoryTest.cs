@@ -27,7 +27,7 @@ namespace InMemoryDbSample.Tests
             var products = new List<Product>()
             {
                 new Product("product test 1", true),
-            new Product("product test 2", false)
+                new Product("product test 2", false)
             };
 
             //Act

@@ -1,17 +1,23 @@
 ﻿using InMemoryDbSample.Repository.Dapper;
+using InMemoryDbSample.Repository.EFCore;
+using InMemoryDbSample.Repository.Interfaces;
 using InMemoryDbSample.Tests.Configure;
+using Moq;
 using Xunit;
 
 namespace InMemoryDbSample.Tests
 {
     public class ReadRepositoryTest
     {
-        private readonly ReadRepository _readRepository;        
+        private readonly Mock<IReadRepository> _readRepository;
+        private readonly ReadRepository _readRepositoryClass;        
         public ReadRepositoryTest()
         {
             var dbInMemory = new MemoryDbConfig();            
             var idbConnection = dbInMemory.GetIDbContext();
-            _readRepository = new ReadRepository(idbConnection);
+            _readRepositoryClass = new ReadRepository(idbConnection);
+            _readRepository = new Mock<IReadRepository>();
+            
         }
 
 
@@ -19,7 +25,9 @@ namespace InMemoryDbSample.Tests
         public async Task Must_get_all_products()
         {
             //Act
-            var products = await _readRepository.GetAll();
+            _readRepository.Setup(x => x.GetAll()).Returns(_readRepositoryClass.GetAll());            
+
+            var products = await _readRepository.Object.GetAll();
 
             //Assert
             Assert.Equal(2, products.Count());
