@@ -1,13 +1,7 @@
 ﻿using Dapper;
 using InMemoryDbSample.Model;
 using InMemoryDbSample.Repository.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InMemoryDbSample.Repository.Dapper
 {

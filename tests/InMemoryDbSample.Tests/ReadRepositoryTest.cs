@@ -1,11 +1,5 @@
 ﻿using InMemoryDbSample.Repository.Dapper;
 using InMemoryDbSample.Tests.Configure;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace InMemoryDbSample.Tests

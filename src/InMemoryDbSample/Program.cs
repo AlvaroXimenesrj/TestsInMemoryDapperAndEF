@@ -1,15 +1,11 @@
-﻿using InMemoryDbSample.Repository;
-using InMemoryDbSample.Repository.Dapper;
+﻿using InMemoryDbSample.Repository.Dapper;
 using InMemoryDbSample.Repository.EFCore;
 using InMemoryDbSample.Repository.Interfaces;
 using InMemoryDbSample.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace InMemoryDbSample
 {

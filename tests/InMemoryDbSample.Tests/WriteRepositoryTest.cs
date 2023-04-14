@@ -1,24 +1,23 @@
 ﻿using InMemoryDbSample.Model;
-using InMemoryDbSample.Repository.Dapper;
 using InMemoryDbSample.Repository.EFCore;
+using InMemoryDbSample.Repository.Interfaces;
 using InMemoryDbSample.Tests.Configure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Moq;
 using Xunit;
 
 namespace InMemoryDbSample.Tests
 {
     public class WriteRepositoryTest
-    {
-        private readonly WriteRepository _writeRepository;
+    {        
+        private readonly Mock<IWriteRepository> _writeRepository;
+        private readonly WriteRepository _writeRepositoryClass;
+
         public WriteRepositoryTest()
         {
             var dbInMemory = new MemoryDbConfig();
             var context = dbInMemory.GetContext();
-            _writeRepository = new WriteRepository(context);
+            _writeRepositoryClass = new WriteRepository(context);
+            _writeRepository = new Mock<IWriteRepository>();
         }
 
         [Fact]
@@ -30,9 +29,11 @@ namespace InMemoryDbSample.Tests
                 new Product("product test 1", true),
             new Product("product test 2", false)
             };
+
             //Act
-            
-            var sucess = await _writeRepository.AddProducts(products);
+            _writeRepository.Setup(x => x.AddProducts(products)).Returns(_writeRepositoryClass.AddProducts(products));
+                       
+            var sucess = await _writeRepository.Object.AddProducts(products);
 
             //Assert
             Assert.True(sucess);
