@@ -16,8 +16,7 @@ namespace InMemoryDbSample.Tests
             var dbInMemory = new MemoryDbConfig();            
             var idbConnection = dbInMemory.GetIDbContext();
             _readRepositoryClass = new ReadRepository(idbConnection);
-            _readRepository = new Mock<IReadRepository>();
-            
+            _readRepository = new Mock<IReadRepository>();            
         }
 
 

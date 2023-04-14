@@ -41,7 +41,6 @@ namespace InMemoryDbSample
            
             conn = conn.Replace("|DataDirectory|", System.IO.Directory.GetCurrentDirectory());
 
-
             services
                 .AddTransient<IDbConnection>(x => new SqlConnection(conn))
                 .AddDbContext<DbContext>(
@@ -52,7 +51,6 @@ namespace InMemoryDbSample
                     providerOptions.EnableRetryOnFailure());
                 });
 
-
             services.AddTransient<IReadRepository, ReadRepository>();
             services.AddTransient<IWriteRepository, WriteRepository>();
             services.AddScoped<IExecute, Execute>();
@@ -60,7 +58,6 @@ namespace InMemoryDbSample
             _serviceProvider = services.BuildServiceProvider();
             
             _execute = _serviceProvider.GetRequiredService<IExecute>();
-
            
         }
     }
